@@ -29,7 +29,7 @@ Vue.prototype.$http = axios;
 //                 return Promise.reject(error);
 //             }
 
-//             /* 
+//             /*
 //              * When response code is 401, try to refresh the token.
 //              * Eject the interceptor so it doesn't loop in case
 //              * token refresh causes the 401 response
@@ -112,7 +112,7 @@ import "../themeConfig.js";
 
 // Firebase
 import "@/firebase/firebaseConfig";
-
+import "@/services/transaction.services";
 // Auth0 Plugin
 import AuthPlugin from "./plugins/auth";
 Vue.use(AuthPlugin);
@@ -251,7 +251,7 @@ Vue.prototype.$sendNotify = function (filter, data, title, contents) {
 }
 
 // import './registerServiceWorker';
-// Vue.prototype.$OneSignal = 
+// Vue.prototype.$OneSignal =
 
 
 // Vue.filter('formatDate', function(value) {

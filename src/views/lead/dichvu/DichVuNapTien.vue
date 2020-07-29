@@ -64,7 +64,8 @@ export default {
         return {
             mask: currencyMask,
             inputSoTien: null,
-            inputBillId: ""
+            inputBillId: "",
+            active2: true
         };
     },
     mounted() {},
@@ -75,52 +76,45 @@ export default {
         },
         async sendInfo() {
             this.$vs.loading();
-            await this.$validator.validateAll().then(result => {
+            this.$validator.validateAll().then(result => {
                 if (result) {
-                    // if form have no errors
-                    let body = {
-                        type: 0, //nap tien
-                        amount: Number(this.inputSoTien.replace(/\D+/g, '')),
-                        extra_info: JSON.stringify({
-                            bill_id: this.inputBillId
-                        })
-                    };
-                    this.$http
-                        .post("/api/transaction/", body)
-                        .then(response => {
-                            this.$vs.loading.close();
-                            this.checkpointReward = response.data;
-                            this.$vs.dialog({
-                                color: "primary",
-                                title: `Thông báo`,
-                                text: "Thành công",
-                                acceptText: "Đóng"
-                            });
-                            //Thong bao den admin co nguoi nop tien
-                            let getUser = JSON.parse(localStorage.getItem("userInfo")) || {};
-                            this.$sendNotify({
-                                    is_admin: true
-                                }, {
-                                    type: "money"
-                                },
-                                "Thông báo",
-                                getUser['userName'] +
-                                " đã nạp: " +
-                                body.amount +
-                                "USD, Bill ID: " +
-                                this.inputBillId
-                            );
-                        })
-                        .catch(error => {
-                            this.$vs.loading.close();
-                            this.$vs.dialog({
-                                color: "danger",
-                                title: `Thông báo`,
-                                text: error.message,
-                                acceptText: "Đóng"
-                            });
-                            console.log(error);
-                        });
+                  let amount = Number(this.inputSoTien.replace(/\D+/g, ''));
+                  let billId = this.inputBillId;
+                  this.$TransactionServices.napTien(amount, billId)
+                    .then(response => {
+                      this.$vs.loading.close();
+                      this.checkpointReward = response.data;
+                      this.$vs.dialog({
+                        color: "primary",
+                        title: `Thông báo`,
+                        text: "Thành công",
+                        acceptText: "Đóng"
+                      });
+                      //Thong bao den admin co nguoi nop tien
+                      let getUser = JSON.parse(localStorage.getItem("userInfo")) || {};
+                      this.$sendNotify({
+                          is_admin: true
+                        }, {
+                          type: "money"
+                        },
+                        "Thông báo",
+                        getUser['userName'] +
+                        " đã nạp: " +
+                        amount +
+                        "USD, Bill ID: " +
+                        billId
+                      );
+                    })
+                    .catch(error => {
+                      this.$vs.loading.close();
+                      this.$vs.dialog({
+                        color: "danger",
+                        title: `Thông báo`,
+                        text: error.message,
+                        acceptText: "Đóng"
+                      });
+                    });
+
                 } else {
                     // form have errors
                     this.$vs.loading.close();
