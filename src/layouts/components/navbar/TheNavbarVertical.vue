@@ -22,7 +22,7 @@
 
             <vs-spacer />
 
-            <!-- <i18n /> 
+            <!-- <i18n />
 
         <search-bar />
 
@@ -30,7 +30,7 @@
 
             <vs-chip color="primary" class="mr-5">
                 <vs-avatar icon-pack="feather" icon="icon-dollar-sign" />
-                <span>{{balance}} VNĐ</span>
+                <span>{{balance}} USD</span>
             </vs-chip>
 
             <notification-drop-down />

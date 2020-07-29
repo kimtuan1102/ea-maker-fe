@@ -47,7 +47,7 @@ import vSelect from "vue-select";
 import createNumberMask from 'text-mask-addons/dist/createNumberMask';
 const currencyMask = createNumberMask({
     prefix: '',
-    suffix: ' VND',
+    suffix: ' USD',
     allowDecimal: false,
     includeThousandsSeparator: true,
     thousandsSeparatorSymbol: '.',
@@ -107,7 +107,7 @@ export default {
                                 getUser['userName'] +
                                 " đã nạp: " +
                                 body.amount +
-                                "VND, Bill ID: " +
+                                "USD, Bill ID: " +
                                 this.inputBillId
                             );
                         })

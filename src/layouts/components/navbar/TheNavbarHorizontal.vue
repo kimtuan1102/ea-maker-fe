@@ -17,7 +17,7 @@
 
             <router-link tag="div" to="/" class="vx-logo cursor-pointer mx-auto flex items-center" style="margin-left:0 !important">
                 <!-- logo class="w-10 mr-4 fill-current text-primary" / -->
-                <a href="#"><img width="80px" src="https://lh3.googleusercontent.com/proxy/M09lWVqqHWGA0O9-RXdASZrVI2hWMGP2Li3w4a7aDID60Kyff4JEfOYvDbPWJ51GDjcf3iTJ1mPZ1E-fz7x9nI6xa1h0QOwhfWMau1HJ6WnNp_EYIvj3w16OcRM87CFVVPKOdcer" alt="logo" border="0"></a>
+                <a href="#"><img height="30px" src="@/assets/images/logo/logo2.png" alt="logo" border="0"></a>
                 <!--span class="vx-logo-text text-primary">DM Group</span-->
             </router-link>
 
@@ -29,7 +29,7 @@
 
             <vs-chip color="primary" class="mr-5">
                 <vs-avatar icon-pack="feather" icon="icon-dollar-sign" />
-                <span>{{balance}} VNĐ</span>
+                <span>{{balance}} USD</span>
             </vs-chip>
 
             <notification-drop-down />

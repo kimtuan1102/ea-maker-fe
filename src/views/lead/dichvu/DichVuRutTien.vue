@@ -63,7 +63,7 @@
 import createNumberMask from 'text-mask-addons/dist/createNumberMask';
 const currencyMask = createNumberMask({
     prefix: '',
-    suffix: ' VND',
+    suffix: ' USD',
     allowDecimal: false,
     includeThousandsSeparator: true,
     thousandsSeparatorSymbol: '.',
@@ -126,7 +126,7 @@ export default {
                                 "Yêu cầu rút tiền từ: " + getUser['userName'] +
                                 " số tiền: " +
                                 body.amount +
-                                "VND"
+                                "USD"
                             );
                         })
                         .catch((error) => {
